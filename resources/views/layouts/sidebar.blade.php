@@ -6,12 +6,12 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{URL('images/ava.png')}}" class="img-circle"
+                <img src="{{URL('../images/ava.png')}}" class="img-circle"
                      alt="User Image"/>
             </div>
             <div class="pull-left info">
                 @if (Auth::guest())
-                <p>InfyOm</p>
+                <p>Aytamy</p>
                 @else
                     <p>{{ Auth::user()->name}}</p>
                 @endif
@@ -21,7 +21,7 @@
         </div>
 
         <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
+        {{-- <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="@lang('auth.app.search')..."/>
           <span class="input-group-btn">
@@ -29,7 +29,7 @@
             </button>
           </span>
             </div>
-        </form>
+        </form> --}}
         <!-- Sidebar Menu -->
 
         <ul class="sidebar-menu" data-widget="tree">

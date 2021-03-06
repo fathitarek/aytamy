@@ -13,7 +13,7 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', 'Image:') !!}
-    <img src= "{{URL($customers->image )}}" height="160"/>
+    <img src= "{{URL('../'.$customers->image )}}" height="160"/>
 </div>
 @endif
 
@@ -67,14 +67,14 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('personal_id', 'Personal Id:') !!}
-    <img src= "{{URL($customers->personal_id )}}" height="160"/>
+    <img src= "{{URL('../'.$customers->personal_id )}}" height="160"/>
 </div>
 @endif
 @if ($customers->mother_certificate)
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('mother_certificate', 'Mother Certificate:') !!}
-    <img src= "{{URL($customers->mother_certificate )}}" height="160"/>
+    <img src= "{{URL('../'.$customers->mother_certificate )}}" height="160"/>
 </div>
 @endif
 
@@ -82,7 +82,7 @@
     <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('father_certificate', 'Father Certificate:') !!}
-    <img src= "{{URL($customers->father_certificate )}}" height="160"/>
+    <img src= "{{URL('../'.$customers->father_certificate )}}" height="160"/>
 </div>
     @endif
 
@@ -90,7 +90,7 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('education_certificate', 'Education Certificate:') !!}
-    <img src= "{{URL($customers->education_certificate )}}" height="160"/>
+    <img src= "{{URL('../'.$customers->education_certificate )}}" height="160"/>
 </div>
 @endif
 <div class="form-group">
