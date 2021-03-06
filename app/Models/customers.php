@@ -44,6 +44,9 @@ class customers extends Model
         'whats_app',
         'parent_mobile',
         'type',
+        'gender',
+        'warranty',
+        'description'
     ];
     protected $hidden = [
         'password',
@@ -74,6 +77,9 @@ class customers extends Model
         'whats_app'=>'integer',
         'parent_mobile'=>'integer',
         'type'=>'integer',
+        'gender'=>'string',
+        'warranty'=>'integer',
+        'description'=>'string',
     ];
 
     /**
