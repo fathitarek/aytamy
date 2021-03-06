@@ -102,4 +102,25 @@ class customers extends Model
         'image' => 'image|mimes:png,jpeg,gif',
         
     ];
+
+    public function country() {
+        return $this->belongsTo('App\Models\countries');
+    }
+
+    public function city() {
+        return $this->belongsTo('App\Models\cities');
+    }
+    public function job() {
+        return $this->belongsTo('App\Models\jobs');
+    }
+    public function dream() {
+        return $this->belongsTo('App\Models\dreams');
+    }
+    public function education() {
+        return $this->belongsTo('App\Models\educations');
+    }
+    public function nationality() {
+        return $this->belongsTo('App\Models\nationalities');
+    }  
 }
+
