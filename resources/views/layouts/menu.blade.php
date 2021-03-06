@@ -11,3 +11,6 @@
 <li class="{{ Request::is('nationalities*') ? 'active' : '' }}">
     <a href="{{ route('nationalities.index') }}"><i class="fa fa-edit"></i><span>Nationalities</span></a>
 </li>
+<li class="{{ Request::is('customers*') ? 'active' : '' }}">
+    <a href="{{ route('customers.index') }}"><i class="fa fa-edit"></i><span>Customers</span></a>
+</li>

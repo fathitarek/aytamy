@@ -22,6 +22,7 @@ class jobsController extends AppBaseController
     public function __construct(jobsRepository $jobsRepo)
     {
         $this->jobsRepository = $jobsRepo;
+        $this->middleware('auth');
     }
 
     /**

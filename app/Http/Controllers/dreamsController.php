@@ -22,6 +22,7 @@ class dreamsController extends AppBaseController
     public function __construct(dreamsRepository $dreamsRepo)
     {
         $this->dreamsRepository = $dreamsRepo;
+        $this->middleware('auth');
     }
 
     /**

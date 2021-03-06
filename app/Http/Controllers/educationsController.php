@@ -22,6 +22,7 @@ class educationsController extends AppBaseController
     public function __construct(educationsRepository $educationsRepo)
     {
         $this->educationsRepository = $educationsRepo;
+        $this->middleware('auth');
     }
 
     /**

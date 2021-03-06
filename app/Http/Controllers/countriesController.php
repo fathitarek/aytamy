@@ -22,6 +22,7 @@ class countriesController extends AppBaseController
     public function __construct(countriesRepository $countriesRepo)
     {
         $this->countriesRepository = $countriesRepo;
+        $this->middleware('auth');
     }
 
     /**

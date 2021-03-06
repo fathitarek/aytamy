@@ -23,6 +23,7 @@ class citiesController extends AppBaseController
     public function __construct(citiesRepository $citiesRepo)
     {
         $this->citiesRepository = $citiesRepo;
+        $this->middleware('auth');
     }
 
     /**
