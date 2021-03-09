@@ -9,6 +9,13 @@
     {!! Form::label('email', 'Email:') !!}
     <p>{{ $customers->email }}</p>
 </div>
+
+<!-- Age Field -->
+<div class="form-group">
+    {!! Form::label('age', 'Age:') !!}
+    <p>{{ $customers->age }}</p>
+</div>
+
 @if ($customers->image)
 <!-- Image Field -->
 <div class="form-group">
@@ -130,8 +137,16 @@
 <p> كفاله ماديه</p>
     @endif 
 </div>
-
-
+@if ($customers->is_complete==1)
+{!! Form::label('is_complete', 'Is Complete:') !!}
+<p>Yes </p>
+@else
+<div class="form-group">
+    {!! Form::label('is_complete', 'Is Complete:') !!}
+<p>No </p>
+    <a href="../update_status_customer/{{$customers->id}}"  class="btn btn-success" id="make_it_complete"> Make This Complete </a>
+    </div>
+@endif
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
