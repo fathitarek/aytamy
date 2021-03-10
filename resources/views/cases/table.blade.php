@@ -17,7 +17,13 @@
             <td>{{ $customers->name }}</td>
             <td>{{ $customers->email }}</td>
             <td>{{ $customers->age }}</td>
-            <td>{{ $customers->country_id }}</td>
+            <td>
+                @if ($customers->is_complete==1)
+               Yes
+                @else
+                No
+                @endif
+            </td>
             {{-- <td>{{ $customers->dream_id }}</td> --}}
             {{-- <td>{{ $customers->job_id }}</td> --}}
                 <td>
