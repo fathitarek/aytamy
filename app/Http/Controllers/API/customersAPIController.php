@@ -44,6 +44,23 @@ class customersAPIController extends AppBaseController
         return $this->sendResponse($customers->toArray(), 'Customers retrieved successfully');
     }
 
+    public function getNewCases(){
+        $customers = customers::where('type',0)->orderBy('updated_at', 'desc')->get();
+        foreach ($customers as $key => $customer) {
+            $customer->age= \Carbon\Carbon::parse($customer->date_birth)->diff(\Carbon\Carbon::now())->format('%y');
+            }
+        return $this->sendResponse($customers->toArray(), 'Customers retrieved successfully');
+
+    }
+
+    public function getWarrantyCases(){
+        $customers = customers::where('type',0)->where('is_warranty',1)->orderBy('updated_at', 'desc')->get();
+        foreach ($customers as $key => $customer) {
+            $customer->age= \Carbon\Carbon::parse($customer->date_birth)->diff(\Carbon\Carbon::now())->format('%y');
+            }
+        return $this->sendResponse($customers->toArray(), 'Customers retrieved successfully');
+
+    }
     /**
      * Store a newly created customers in storage.
      * POST /customers
@@ -65,8 +82,14 @@ class customersAPIController extends AppBaseController
     public function login(Request $request){
      // $pass=  bcrypt($request->password);
         $customers=customers::where('email',$request->email)->where('password',$request->password)->get();
-    //  dd($pass);
-        return $this->sendResponse($customers->toArray(), 'Customers retrieved successfully');
+    // return $customers[0];
+    if (count($customers)) {
+        return $this->sendResponse($customers[0]->toArray(), 'Customers retrieved successfully');
+    }
+    else {
+        return $this->sendError('Customers retrieved Not successfully');
+
+    }
 
     }
     /**
@@ -104,6 +127,17 @@ class customersAPIController extends AppBaseController
         $input = $request->all();
         // dd($input['personal_id']);
  $destination = 'images/customers';
+
+ if (!is_null(Input::file('image'))) {
+
+    $image = $this->uploadFile('image', $destination);
+    // return $similar_sections['image_en'].$image_en ;
+    if (gettype($image) == 'string') {
+        $input['image'] = $destination . '/' . $image;
+    }
+}
+
+
         if (!is_null(Input::file('personal_id'))) {
 
             $image = $this->uploadFile('personal_id', $destination);
@@ -162,6 +196,22 @@ class customersAPIController extends AppBaseController
         $customers = $this->customersRepository->update($input, $id);
 
         return $this->sendResponse($customers->toArray(), 'customers updated successfully');
+    }
+
+    public function search($name){
+        $customers = customers::where('type',0)->where('name', 'LIKE', '%' .$name . '%')->get();
+        if (count($customers)) {
+            foreach ($customers as $key => $customer) {
+                $customer->age= \Carbon\Carbon::parse($customer->date_birth)->diff(\Carbon\Carbon::now())->format('%y');
+                }
+            return $this->sendResponse($customers->toArray(), 'Customers retrieved successfully');
+        }
+        else {
+            return $this->sendError('Customers retrieved Not successfully');
+    
+        }
+      
+        // return $this->sendResponse($customers->toArray(), 'Customers retrieved successfully');
     }
 
     /**

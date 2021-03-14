@@ -29,6 +29,13 @@ Route::resource('cities', 'citiesAPIController');
 Route::get('cities_with_country/{id}', 'citiesAPIController@getCityWithCountry');
 Route::post('login', 'customersAPIController@login');
 Route::post('customers/{id}', 'customersAPIController@update');
+Route::get('get_new_cases', 'customersAPIController@getNewCases');
+Route::get('get_warranty_cases', 'customersAPIController@getWarrantyCases');
+Route::get('search/{name}', 'customersAPIController@search');
+
+
+
+
 
 
 });
