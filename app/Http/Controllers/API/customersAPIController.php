@@ -5,6 +5,12 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreatecustomersAPIRequest;
 use App\Http\Requests\API\UpdatecustomersAPIRequest;
 use App\Models\customers;
+use App\Models\countries;
+use App\Models\cities;
+use App\Models\dreams;
+use App\Models\educations;
+use App\Models\jobs;
+use App\Models\nationalities;
 use App\Repositories\customersRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -79,6 +85,23 @@ class customersAPIController extends AppBaseController
         return $this->sendResponse($customers->toArray(), 'Customers saved successfully');
     }
 
+    public function saveSocialMedia(Request $request){
+
+        $customers=customers::where('email',$request->email)->where('social_id',$request->social_id)->get();
+        if (count($customers)) {
+            $customers[0]['first']=0;
+            return $this->sendResponse($customers[0]->toArray(), 'Customers retrieved successfully');
+        }else {
+    $input = $request->all();
+    // $input['password']= bcrypt($input['password']);
+
+     $customers = $this->customersRepository->create($input);
+    //  $customers[0]['first']=0;
+     return $this->sendResponse($customers->toArray(), 'Customers saved successfully');
+}
+
+
+    }
     public function login(Request $request){
      // $pass=  bcrypt($request->password);
         $customers=customers::where('email',$request->email)->where('password',$request->password)->get();
@@ -104,6 +127,59 @@ class customersAPIController extends AppBaseController
     {
         /** @var customers $customers */
         $customers = $this->customersRepository->find($id);
+        if ($customers->dream_id) {
+        $dreams =  dreams::findOrFail($customers->dream_id);
+        if (app()->getLocale()=='ar') {
+            $customers->dream_name=$dreams->name_ar;
+        }else {
+            $customers->dream_name=$dreams->name_en;
+        }
+        }
+        
+        if ($customers->country_id) {
+            $countries =  countries::findOrFail($customers->country_id);
+            if (app()->getLocale()=='ar') {
+                $customers->country_name=$countries->name_ar;
+            }else {
+                $customers->country_name=$countries->name_en;
+            }
+            }
+            
+            if ($customers->city_id) {
+                $cities =  cities::findOrFail($customers->city_id);
+                if (app()->getLocale()=='ar') {
+                    $customers->city_name=$cities->name_ar;
+                }else {
+                    $customers->city_name=$cities->name_en;
+                }
+                }
+
+                if ($customers->job_id) {
+                    $jobs =  jobs::findOrFail($customers->job_id);
+                    if (app()->getLocale()=='ar') {
+                        $customers->job_name=$jobs->name_ar;
+                    }else {
+                        $customers->job_name=$jobs->name_en;
+                    }
+                    }
+                    
+                    if ($customers->education_id) {
+                        $educations =  educations::findOrFail($customers->education_id);
+                        if (app()->getLocale()=='ar') {
+                            $customers->education_name=$educations->name_ar;
+                        }else {
+                            $customers->education_name=$educations->name_en;
+                        }
+                        }
+                    
+                    if ($customers->nationality_id) {
+                        $nationalities =  nationalities::findOrFail($customers->nationality_id);
+                        if (app()->getLocale()=='ar') {
+                            $customers->nationalty_name=$nationalities->name_ar;
+                        }else {
+                            $customers->nationalty_name=$nationalities->name_en;
+                        }
+                        }
 
         if (empty($customers)) {
             return $this->sendError('Customers not found');
@@ -121,7 +197,7 @@ class customersAPIController extends AppBaseController
      *
      * @return \Illuminate\Http\JsonResponse|Response
      */
-    public function update($id, UpdatecustomersAPIRequest $request)
+    public function update($id,Request $request)
     {
         // dd($request);
         $input = $request->all();

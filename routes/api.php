@@ -32,10 +32,12 @@ Route::post('customers/{id}', 'customersAPIController@update');
 Route::get('get_new_cases', 'customersAPIController@getNewCases');
 Route::get('get_warranty_cases', 'customersAPIController@getWarrantyCases');
 Route::get('search/{name}', 'customersAPIController@search');
-
+Route::post('save_social_media', 'customersAPIController@saveSocialMedia');
+Route::resource('likes', 'likesAPIController');
 
 
 
 
 
 });
+

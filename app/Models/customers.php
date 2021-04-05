@@ -46,7 +46,11 @@ class customers extends Model
         'type',
         'gender',
         'warranty',
-        'description'
+        'description',
+        'social_token',
+        'social_id',
+        'fb_token',
+        'social_type'
     ];
     protected $hidden = [
         'password',

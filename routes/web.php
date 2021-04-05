@@ -39,3 +39,6 @@ Route::get('cases', 'CaseController@getAllCases');
 Route::get('cases/{id}', 'CaseController@show')->name('cases.show');
 Route::get('update_status_customer/{id}', 'CaseController@completeCase');
 
+
+
+Route::resource('likes', 'likesController');
