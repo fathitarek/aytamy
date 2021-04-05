@@ -35,6 +35,7 @@ Route::get('search/{name}', 'customersAPIController@search');
 Route::post('save_social_media', 'customersAPIController@saveSocialMedia');
 Route::resource('likes', 'likesAPIController');
 
+Route::get('delete_like_from_home/{from_id}/{to_id}', 'likesAPIController@deleteFromHomePage');
 
 
 

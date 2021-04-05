@@ -140,4 +140,9 @@ $this-> firebase_notification($request->to, $title, $body,null);
 
         return $this->sendSuccess('Likes deleted successfully');
     }
+    public function deleteFromHomePage($from_id,$to_id){
+       $likes= likes::where('from',$from_id)->where('to',$to_id)->firstorfail()->delete();
+       return $this->sendSuccess('Likes deleted successfully');
+
+    }
 }
