@@ -42,3 +42,5 @@ Route::get('update_status_customer/{id}', 'CaseController@completeCase');
 
 
 Route::resource('likes', 'likesController');
+
+Route::resource('notifications', 'notificationsController');

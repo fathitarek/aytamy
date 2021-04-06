@@ -6,7 +6,8 @@ use InfyOm\Generator\Utils\ResponseUtil;
 use Response;
 use Illuminate\Support\Facades\Input;
 use App\Models\customers;
-
+use App\Models\notifications;
+use App\Http\Controllers\notificationsController;
 /**
  * @SWG\Swagger(
  *   basePath="/api/v1",
@@ -102,14 +103,21 @@ class AppBaseController extends Controller
 
         $input = [];
         $input['title']         = $title;
-        $input['message']       = $message;
-        $input['user_id']       = $user_id;   
-        $input['type']          = $navigation['type'];
-        $input['navigation_id'] = $navigation['navigation_id']; 
-
-      //  $notification = new Notifications;
-       // $notification->fill($input)->save();
-        
+        $input['body']       = $message;
+        $input['customer_id']       = $user_id;   
+        if (app()->getLocale()=='ar') 
+        {
+            $input['lang'] ='ar';  
+        }else{
+            $input['lang'] ='en';
+        }
+        //
+       $input['created_at'] =date("Y-m-d"); 
+       $input['updated_at'] =date("Y-m-d"); 
+       $notification = new notifications();
+      $notification->fill($input)->save();
+    //   dd($input);
+        // $notification->save($input);
         return $result;
     }
 }

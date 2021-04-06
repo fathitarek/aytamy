@@ -36,9 +36,11 @@ Route::post('save_social_media', 'customersAPIController@saveSocialMedia');
 Route::resource('likes', 'likesAPIController');
 
 Route::get('delete_like_from_home/{from_id}/{to_id}', 'likesAPIController@deleteFromHomePage');
-
-
+Route::resource('notifications', 'notificationsAPIController');
+Route::get('get_notifications_per_user/{castumer_id}', 'notificationsAPIController@getNotificationPerUser');
 
 
 });
+
+
 
