@@ -35,7 +35,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="#" class="logo">
+            <a href="http://aytamapp.com/public/index.php/home" class="logo">
                 <b>Aytam</b>
             </a>
 

@@ -7,7 +7,7 @@
         <div class="user-panel">
             <div class="pull-left image">
                 <img src="{{URL('../images/ava.png')}}" class="img-circle"
-                     alt="User Image"/>
+                     alt="Aytam"/>
             </div>
             <div class="pull-left info">
                 @if (Auth::guest())
@@ -16,7 +16,7 @@
                     <p>{{ Auth::user()->name}}</p>
                 @endif
                 <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i>@lang('auth.app.online')</a>
+                <a href="http://aytamapp.com/public/index.php/home"><i class="fa fa-circle text-success"></i>@lang('auth.app.online')</a>
             </div>
         </div>
 
