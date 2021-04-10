@@ -37,10 +37,9 @@ Route::resource('cities', 'citiesController');
 
 Route::get('cases', 'CaseController@getAllCases');
 Route::get('cases/{id}', 'CaseController@show')->name('cases.show');
+Route::get('kafel/{id}', 'CaseController@showKafeel')->name('sponsor.show');
+
 Route::get('update_status_customer/{id}', 'CaseController@completeCase');
-
-
-
+Route::get('kafel', 'CaseController@getAllKafeel');
 Route::resource('likes', 'likesController');
-
 Route::resource('notifications', 'notificationsController');

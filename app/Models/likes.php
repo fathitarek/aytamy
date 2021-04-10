@@ -46,5 +46,10 @@ class likes extends Model
         'to' => 'required'
     ];
 
-    
+    public function customer() {
+        return $this->belongsTo('App\Models\customers','from');
+    }
+    public function customer_to() {
+        return $this->belongsTo('App\Models\customers','to');
+    }
 }

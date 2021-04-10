@@ -22,3 +22,11 @@
 <li class="{{ Request::is('cases') ? 'active' : '' }}">
     <a href="{{ URL('cases') }}"><i class="fa fa-edit"></i><span>Cases</span></a>
 </li>
+
+<li class="{{ Request::is('kafel') ? 'active' : '' }}">
+    <a href="{{ URL('kafel') }}"><i class="fa fa-edit"></i><span>Sponsor</span></a>
+</li>
+
+<li class="{{ Request::is('likes') ? 'active' : '' }}">
+    <a href="{{ URL('likes') }}"><i class="fa fa-edit"></i><span>Likes</span></a>
+</li>
