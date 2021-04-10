@@ -61,7 +61,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                    <img src="{{URL('../images/ava.png')}}"
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                         {{ Auth::user()->name }}
@@ -69,10 +69,10 @@
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div class="pull-left">
+                                 <li class="user-footer">
+                                 {{--   <div class="pull-left">
                                         <a href="#" class="btn btn-default btn-flat">@lang('auth.app.profile')</a>
-                                    </div>
+                                    </div> --}}
                                     <div class="pull-right">
                                         <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

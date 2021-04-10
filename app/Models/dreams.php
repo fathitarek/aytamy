@@ -46,5 +46,8 @@ class dreams extends Model
         'name_ar' => 'required|unique:dreams'
     ];
 
-    
+    public static $rulesUpdate = [
+        'name_en' => 'required',
+        'name_ar' => 'required'
+    ]; 
 }

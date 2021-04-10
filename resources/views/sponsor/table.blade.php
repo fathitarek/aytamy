@@ -5,7 +5,7 @@
                 <th>Name</th>
         <th>Email</th>
         <th>Age</th>
-        <th>Completed</th>
+        {{-- <th>Completed</th> --}}
         {{-- <th>Dream Id</th> --}}
         {{-- <th>Job Id</th> --}}
                 <th colspan="3">Action</th>
@@ -17,13 +17,13 @@
             <td>{{ $customers->name }}</td>
             <td>{{ $customers->email }}</td>
             <td>{{ $customers->age }}</td>
-            <td>
+            {{-- <td>
                 @if ($customers->is_complete==1)
                Yes
                 @else
                 No
                 @endif
-            </td>
+            </td> --}}
             {{-- <td>{{ $customers->dream_id }}</td> --}}
             {{-- <td>{{ $customers->job_id }}</td> --}}
                 <td>

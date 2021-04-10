@@ -25,8 +25,8 @@ class UpdatedreamsRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = dreams::$rules;
-        $rules['name_en'] = $rules['name_en'].",".$this->route("dream");$rules['name_ar'] = $rules['name_ar'].",".$this->route("dream");
+        $rules = dreams::$rulesUpdate;
+       // $rules['name_en'] = $rules['name_en'].",".$this->route("dream");$rules['name_ar'] = $rules['name_ar'].",".$this->route("dream");
         return $rules;
     }
 }
