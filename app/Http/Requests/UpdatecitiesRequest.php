@@ -25,8 +25,7 @@ class UpdatecitiesRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = cities::$rules;
-        $rules['name_en'] = $rules['name_en'].",".$this->route("city");$rules['name_ar'] = $rules['name_ar'].",".$this->route("city");
+        $rules = cities::$rulesUpdate;
         return $rules;
     }
 }

@@ -49,7 +49,12 @@ class cities extends Model
         'name_ar' => 'required|unique:cities',
         'country_id' => 'required'
     ];
-
+    public static $rulesUpdate = [
+        'name_en' => 'required',
+        'name_ar' => 'required',
+        'country_id' => 'required'
+    ];
+    
     public function country() {
         return $this->belongsTo('App\Models\countries');
     }
