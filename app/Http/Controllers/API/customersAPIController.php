@@ -81,15 +81,31 @@ class customersAPIController extends AppBaseController
        // $input['password']= bcrypt($input['password']);
 
         $customers = $this->customersRepository->create($input);
-
+        $title='تسجيل';
+        if (app()->getLocale()=='ar') {
+            $body="مرحباً بالايتام والزوار في التطبيق الاول
+            من نوعه في رعاية ومتابعة ابنائنا الايتام";
+        }
+        else {
+            $body="dear orphans and respected visitors welcome to the first application Of its kind which cares and follow-up of our orphan children";
+        }
+        $this->firebase_notification($customers->id, $title, $body,null);
         return $this->sendResponse($customers->toArray(), 'Customers saved successfully');
     }
 
     public function saveSocialMedia(Request $request){
-
+        $title='تسجيل';
+        if (app()->getLocale()=='ar') {
+            $body="مرحباً بالايتام والزوار في التطبيق الاول
+            من نوعه في رعاية ومتابعة ابنائنا الايتام";
+        }
+        else {
+            $body="dear orphans and respected visitors welcome to the first application Of its kind which cares and follow-up of our orphan children";
+        }
         $customers=customers::where('email',$request->email)->where('social_id',$request->social_id)->get();
         if (count($customers)) {
             $customers[0]['first']=0;
+            $this->firebase_notification($customers[0]->id, $title, $body,null);
             return $this->sendResponse($customers[0]->toArray(), 'Customers retrieved successfully');
         }else {
     $input = $request->all();
