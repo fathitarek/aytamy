@@ -25,8 +25,7 @@ class UpdatejobsRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = jobs::$rules;
-        $rules['<a'] = $rules['<a'].",".$this->route("job");$rules['name_ar'] = $rules['name_ar'].",".$this->route("job");
+        $rules = jobs::$rulesUpdate;
         return $rules;
     }
 }

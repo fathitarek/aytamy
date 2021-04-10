@@ -48,5 +48,8 @@ class jobs extends Model
         'name_ar' => 'required|unique:jobs'
     ];
 
-    
+    public static $rulesUpdate = [
+        'name_en' =>'required',
+        'name_ar' => 'required'
+    ];   
 }

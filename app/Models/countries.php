@@ -45,7 +45,11 @@ class countries extends Model
         'name_en' => 'required|unique:countries',
         'name_ar' => 'required|unique:countries'
     ];
-
+    public static $rulesUpdate = [
+        'name_en' => 'required',
+        'name_ar' => 'required'
+    ];
+    
     public function cities() {
         return $this->hasMany('App\Models\cities');
     }

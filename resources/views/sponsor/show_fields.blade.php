@@ -105,10 +105,10 @@
     <p>{{ $customers->whats_app }}</p>
 </div>
 
-<div class="form-group">
+{{-- <div class="form-group">
     {!! Form::label('parent_mobile', 'Parent Mobile:') !!}
     <p>{{ $customers->parent_mobile }}</p>
-</div>
+</div> --}}
 
 <div class="form-group">
     {!! Form::label('gender', 'Gender:') !!}
