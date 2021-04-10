@@ -46,5 +46,8 @@ class nationalities extends Model
         'name_ar' => 'required|unique:nationalities'
     ];
 
-    
+    public static $rulesUpdate = [
+        'name_en' => 'required',
+        'name_ar' => 'required'
+    ];   
 }

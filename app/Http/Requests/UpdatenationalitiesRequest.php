@@ -25,8 +25,7 @@ class UpdatenationalitiesRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = nationalities::$rules;
-        $rules['name_en'] = $rules['name_en'].",".$this->route("nationality");$rules['name_ar'] = $rules['name_ar'].",".$this->route("nationality");
+        $rules = nationalities::$rulesUpdate;
         return $rules;
     }
 }
