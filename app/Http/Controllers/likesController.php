@@ -22,6 +22,7 @@ class likesController extends AppBaseController
     public function __construct(likesRepository $likesRepo)
     {
         $this->likesRepository = $likesRepo;
+        $this->middleware('auth');
     }
 
     /**

@@ -7,6 +7,10 @@ use App\Models\customers;
 use Flash;
 class CaseController extends Controller
 {
+   public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function getAllCases(){
        $customers= customers::where('type',0)->get();
        foreach ($customers as $key => $customer) {

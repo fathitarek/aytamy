@@ -22,6 +22,7 @@ class notificationsController extends AppBaseController
     public function __construct(notificationsRepository $notificationsRepo)
     {
         $this->notificationsRepository = $notificationsRepo;
+        $this->middleware('auth');
     }
 
     /**
