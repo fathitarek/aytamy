@@ -143,6 +143,8 @@ class customersAPIController extends AppBaseController
     {
         /** @var customers $customers */
         $customers = $this->customersRepository->find($id);
+        $customers->kafel_count = \DB::table('payment')->where('to_id',$id)->count();
+        // return $kafel_count;
         if ($customers->dream_id) {
         $dreams =  dreams::findOrFail($customers->dream_id);
         if (app()->getLocale()=='ar') {
@@ -225,7 +227,7 @@ class customersAPIController extends AppBaseController
     $image = $this->uploadFile('image', $destination);
     // return $similar_sections['image_en'].$image_en ;
     if (gettype($image) == 'string') {
-        $input['image'] = $destination . '/' . $image;
+        $input['image'] = 'http://aytamapp.com/public/'.$destination . '/' . $image;
     }
 }
 
@@ -328,5 +330,43 @@ class customersAPIController extends AppBaseController
         $customers->delete();
 
         return $this->sendSuccess('Customers deleted successfully');
+    }
+
+    public function historyPayment($id){
+        $kafels = \DB::table('payment')->where('from_id',$id)->get();
+        foreach ($kafels as $kafel) {
+            if ($kafel->type=='cloth') {
+                if (app()->getLocale()=='ar') {
+                    $kafel->name='بنك الملابس';
+                }
+                else {$kafel->name='Clothes Bank';}  
+            }
+
+
+
+            if ($kafel->type=='food') {
+                if (app()->getLocale()=='ar') {
+                    $kafel->name='بنك الطعام';
+                }
+                else {
+                    $kafel->name='Food Bank';}  
+            }
+
+
+            if ($kafel->type=='treatment') {
+                if (app()->getLocale()=='ar') {
+                    $kafel->name='بنك العلاج';
+                }
+                else {
+                    $kafel->name='Treatment Bank';}  
+            }
+
+            if ($kafel->to_id) {$kafel->name= customers::find($kafel->to_id)->name;}  
+            
+
+        }
+        return $this->sendResponse($kafels->toArray(), 'History retrieved successfully');
+
+
     }
 }
