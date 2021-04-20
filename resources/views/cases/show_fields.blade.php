@@ -147,6 +147,30 @@
     <a href="../update_status_customer/{{$customers->id}}"  class="btn btn-success" id="make_it_complete"> Make This Complete </a>
     </div>
 @endif
+
+@if (count($cases))
+    
+
+<table class="table table-hover table-bordered" style="width: 80%">
+    <caption> ( {{count($cases)}})  المتكفلين بهذا اليتيم</caption>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">$</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach ($cases as $case)
+        <tr>
+            <td>{{$case->name}}</td>
+            <td>{{$case->amount}}</td>
+          </tr> 
+        @endforeach
+      
+    </tbody>
+  </table>
+  @endif
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

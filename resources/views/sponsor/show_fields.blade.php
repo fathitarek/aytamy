@@ -138,6 +138,30 @@
     @endif 
 </div>
 
+
+@if (count($kafeels))
+    
+
+<table class="table table-hover table-bordered" style="width: 80%">
+    <caption> ( {{count($kafeels)}})  الايتام المكفولين</caption>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">$</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach ($kafeels as $kafeel)
+        <tr>
+            <td>{{$kafeel->name}}</td>
+            <td>{{$kafeel->amount}}</td>
+          </tr> 
+        @endforeach
+      
+    </tbody>
+  </table>
+  @endif
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

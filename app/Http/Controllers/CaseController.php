@@ -35,10 +35,13 @@ class CaseController extends Controller
       $customers= customers::find($id);
     //   foreach ($customers as $key => $customer) {
       $customers->age= \Carbon\Carbon::parse($customers->date_birth)->diff(\Carbon\Carbon::now())->format('%y years and %m months');
-
-    //   }
-    //   return $customers;
-      return view('sponsor.show')->with('customers',$customers);
+     
+      $kafeels = \DB::table('payment')->where('type','donation')->where('from_id',$id)->get();
+      foreach ($kafeels as  $kafeel) {
+       $kafeel->name= customers::find($kafeel->to_id)->name;
+    }
+   // return $kafeels;
+      return view('sponsor.show')->with('kafeels', $kafeels)->with('customers',$customers);
 
    }
 
@@ -46,10 +49,12 @@ class CaseController extends Controller
         $customers= customers::find($id);
       //   foreach ($customers as $key => $customer) {
         $customers->age= \Carbon\Carbon::parse($customers->date_birth)->diff(\Carbon\Carbon::now())->format('%y years and %m months');
- 
-      //   }
-      //   return $customers;
-        return view('cases.show')->with('customers',$customers);
+        $cases = \DB::table('payment')->where('type','donation')->where('to_id',$id)->get();
+        foreach ($cases as  $case) {
+         $case->name= customers::find($case->from_id)->name;
+      }
+      // return $cases; 
+        return view('cases.show')->with('cases', $cases)->with('customers',$customers);
  
      }
 
