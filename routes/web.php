@@ -53,3 +53,6 @@ Route::get('payment/success', 'PayPalController@success')->name('payment.success
 
 Route::get('v', 'PayPalController@request');
 
+Route::get('/policy', function () {
+    return view('policy');
+});
