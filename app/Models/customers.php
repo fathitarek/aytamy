@@ -93,7 +93,7 @@ class customers extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'email' => 'required',
+        'email' => 'required|unique:customers',
         'password' => 'required',
         'image' => 'image|mimes:png,jpeg,gif',
         
